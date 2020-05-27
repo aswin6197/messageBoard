@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to message board
+  h2 Messages
+  each msg in messages
+    p   #{msg.name} : #{msg.message}
+  form(method="POST",action="/")
+    input(type="text",name="username",placeholder="username")
+    input(type="text",name="message",placeholder="enter message here")
+    | 
+    button(type="submit") Send
