@@ -22,7 +22,7 @@ exports.msg = function(req, res, next) {
     }).then(msg => {
 
         // console.log("added"+msg);
-        res.redirect("/");
+        res.send({msg:"success"});
     })
     // console.log("message is "+req.body.input);
     // res.redirect("/done");
