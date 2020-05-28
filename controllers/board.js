@@ -4,16 +4,19 @@ var { messages } = require("../models");
 
 exports.home = function(req, res, next) {
 
-    console.log(req.query);
+    // console.log(req.user);
+    if(!req.isAuthenticated())
+        res.redirect("/login");
 
     messages.count().then(count =>{
+        let ofset = (count > 15)? count - 15 : 0
         messages.findAll({
             attributes : ['name','message'],
             order : [['createdAt','ASC']],
-            offset : count-3,
-            limit : 3
+            offset : ofset,
+            limit : 15
         }).then(msgs =>{
-            res.render('index',{messages : msgs});
+            res.render('index',{messages : msgs,username :req.user.username});
         })
     });
     // messages.findAll({

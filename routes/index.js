@@ -20,4 +20,6 @@ router.get("/login",auth.login);
 router.post("/login",auth.checkLogin);  
 router.get("/signup",auth.signup);
 router.post("/signup",auth.addUser);
+
+router.get("/logout",auth.logout);
 module.exports = router;
