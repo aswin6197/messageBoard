@@ -15,12 +15,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks : {
       beforeCreate : (user) => {
-        const salt = bcrypt.genSalt();
-        user.password = bcrypt.hash(user.password,salt);
+        user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(),null);
+        // const salt = bcrypt.genSalt();
+        // user.password = bcrypt.hash(user.password,salt);
       }
     },
     instanceMethods : {
-      validatePassword(password){
+      validatePasswor : function(password){
         return bcrypt.compareSync(password,this.password);
       }
     }
@@ -28,5 +29,8 @@ module.exports = (sequelize, DataTypes) => {
   Users.associate = function(models) {
     // associations can be defined here
   };
+  Users.prototype.validatePassword = function(password){
+    return bcrypt.compareSync(password,this.password);
+  }
   return Users;
 };

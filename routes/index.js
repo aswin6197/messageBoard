@@ -11,12 +11,13 @@ router.get('/', board.home);
 router.post('/',board.msg);
 
 router.get("/login",auth.login);
-router.post("/login",passport.authenticate(
-    'local',{
-        successRedirect : "/",
-        failureRedirect : "/error"
-    }
-));
+// router.post("/login",passport.authenticate(
+//     'local',{
+//         successRedirect : "/",
+//         failureRedirect : "/error"
+//     }
+// ));
+router.post("/login",auth.checkLogin);  
 router.get("/signup",auth.signup);
 router.post("/signup",auth.addUser);
 module.exports = router;
