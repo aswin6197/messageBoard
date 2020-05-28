@@ -3,7 +3,7 @@ function sendMessage(){
         username : $("#username").val(),
         message : $("#message").val()
     }
-
+    
     $.ajax({
         url : "/",
         contentType : "application/json",

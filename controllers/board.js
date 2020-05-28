@@ -4,18 +4,31 @@ var { messages } = require("../models");
 
 exports.home = function(req, res, next) {
 
-    messages.findAll({
-        attributes : ['name','message'],
-        order : [
-            ['createdAt','ASC']
-        ]
-    }).then(msgs =>{
-        res.render('index',{messages : msgs})
-    })
+    console.log(req.query);
+
+    messages.count().then(count =>{
+        messages.findAll({
+            attributes : ['name','message'],
+            order : [['createdAt','ASC']],
+            offset : count-3,
+            limit : 3
+        }).then(msgs =>{
+            res.render('index',{messages : msgs});
+        })
+    });
+    // messages.findAll({
+    //     attributes : ['name','message'],
+    //     order : [
+    //         ['createdAt','ASC']
+    //     ]
+    // }).then(msgs =>{
+    //     res.render('index',{messages : msgs,test:"tst"})
+    // })
     // res.render('index', { title: "temp" });
   };
 
 exports.msg = function(req, res, next) {
+    console.log(req.body);
     messages.create({
         name : req.body.username,
         message : req.body.message
