@@ -11,15 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type : DataTypes.STRING,
       allowNull : false,
-    },
-  }, {
-    hooks : {
-      beforeCreate : (user) => {
-        user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(),null);
-        // const salt = bcrypt.genSalt();
-        // user.password = bcrypt.hash(user.password,salt);
+      set (passwd){
+        let final = bcrypt.hashSync(passwd,bcrypt.genSaltSync(),null);
+        this.setDataValue('password',final);
       }
     },
+  }, {
     instanceMethods : {
       validatePasswor : function(password){
         return bcrypt.compareSync(password,this.password);

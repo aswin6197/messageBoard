@@ -12,7 +12,11 @@ function sendMessage(username){
         type : "POST",
         success : ((res) =>{
             console.log("added message to db")
-            $("#message").before("<p>"+data.username +" : "+data.message);
+            $("#message").prev().clone().html(
+                "<p class='name'> "+data.username+"</p>"+
+                "<p class='msg'>"+data.message+"</p>"
+            ).insertBefore("#message");
+            // $("#message").before("<div class='msgbox'><p>"+data.username +" : "+data.message);
             $("h2").next().remove();
         }),
         error  : ((err)=>{

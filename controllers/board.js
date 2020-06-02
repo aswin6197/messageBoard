@@ -9,12 +9,13 @@ exports.home = function(req, res, next) {
         res.redirect("/login");
 
     messages.count().then(count =>{
-        let ofset = (count > 15)? count - 15 : 0
+        let msgCount = 5;
+        let ofset = (count > msgCount)? count - msgCount : 0
         messages.findAll({
             attributes : ['name','message'],
-            order : [['createdAt','ASC']],
             offset : ofset,
-            limit : 15
+            limit : msgCount,
+            order : [['createdAt','ASC']]
         }).then(msgs =>{
             res.render('index',{messages : msgs,username :req.user.username});
         })

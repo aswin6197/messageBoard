@@ -7,6 +7,7 @@ require("../passportConfig");
 
 var { Users} = require("../models");
 
+//get req for signup
 exports.login = function(req, res, next){
     if(req.isAuthenticated())
         res.redirect("/");
@@ -14,10 +15,11 @@ exports.login = function(req, res, next){
 }
 
 
-
+//get req for signup
 exports.signup = function(req, res, next){
     res.render('loginSignup',{link : "signup"});
 }
+//post req for login
 exports.checkLogin = function(req, res, next){
     passport.authenticate('local',{
         successRedirect:"/",
@@ -25,6 +27,7 @@ exports.checkLogin = function(req, res, next){
     })(req, res, next);
 }
 
+//post req of signup
 exports.addUser = function(req, res, next){
     console.log(req.body)
     Users.create({
@@ -35,17 +38,15 @@ exports.addUser = function(req, res, next){
         req.login(user,function(err){
             if(err)
                 return next(err);
-            // console.log(req.session);
             res.redirect("/");
         });
-        // console.log(req.session);
-        // res.redirect("/");
     }).catch(function(err){
         console.log(err);
         res.redirect("/errors");
     })
 }
 
+//get req for logou
 exports.logout = function(req, res, next){
     req.logout();
     res.redirect("/login");
