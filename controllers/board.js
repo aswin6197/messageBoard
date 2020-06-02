@@ -9,7 +9,7 @@ exports.home = function(req, res, next) {
         res.redirect("/login");
 
     messages.count().then(count =>{
-        let msgCount = 5;
+        let msgCount = 10;
         let ofset = (count > msgCount)? count - msgCount : 0
         messages.findAll({
             attributes : ['name','message'],
