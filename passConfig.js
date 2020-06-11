@@ -26,7 +26,7 @@ module.exports = function(passport){
             console.log(username,password);
             User.findOne({
                 where : {
-                    name : username
+                    username : username
                 }
             }).then(user =>{
                 if(user == null)

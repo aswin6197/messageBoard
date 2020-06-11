@@ -35,6 +35,21 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// const {User, Message} = require("./models")
+
+//testing model
+// User.findOne({
+//   where : {
+//     name : 'aswinmanoj'
+//   }
+// }).then(User =>{
+//     return User.getMessages();
+//   }).then(msgs => {
+//     msgs.forEach(msg => {
+//       console.log(msg.author);
+//     })
+//   })
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

@@ -1,23 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var { messages } = require("../models");
+var { Message,User } = require("../models");
 
 exports.home = function(req, res, next) {
 
     // console.log(req.user);
+    // console.log("here" + req.user.msg)
     if(!req.isAuthenticated())
         res.redirect("/login");
 
-    messages.count().then(count =>{
+    Message.count().then(count =>{
         let msgCount = 10;
         let ofset = (count > msgCount)? count - msgCount : 0
-        messages.findAll({
-            attributes : ['name','message'],
+        Message.findAll({
+            attributes : ['author','message'],
             offset : ofset,
             limit : msgCount,
             order : [['createdAt','ASC']]
         }).then(msgs =>{
-            res.render('index',{messages : msgs,username :req.user.username});
+            // console.log(msgs[0].Users)
+            res.render('index',{messages : msgs,username :req.user.name});
         })
     });
     // messages.findAll({
@@ -32,11 +34,16 @@ exports.home = function(req, res, next) {
   };
 
 exports.msg = function(req, res, next) {
-    console.log(req.body);
-    messages.create({
-        name : req.body.username,
+    console.log(req.user.name);
+    req.user.createMessage({
+        author : req.user.name,
         message : req.body.message
-    }).then(msg => {
+    })
+    // messages.create({
+    //     author : req.body.username,
+    //     message : req.body.message
+    // })
+    .then(msg => {
 
         // console.log("added"+msg);
         res.send({msg:"success"});

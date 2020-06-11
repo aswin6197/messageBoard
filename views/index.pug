@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  link(rel='stylesheet', href='/stylesheets/indexstyle.css')
   script(src="https://code.jquery.com/jquery-3.5.1.min.js")
   script(src="javascripts/ajaxRequest.js")
   header 
@@ -10,7 +11,7 @@ block content
   - var c = 0;
   each msg in messages
     div(class='msgbox') 
-      p(class="name") #{msg.name}:
+      p(class="name") #{msg.author}:
       p(class="msg") #{msg.message} 
         
   //- input(id = "usrname",type="text",name="username",placeholder="username")

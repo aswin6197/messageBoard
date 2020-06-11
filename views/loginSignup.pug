@@ -1,14 +1,17 @@
 extends layout
 
 block content
-    form(method="POST",action="#{link}")
-        input(type="string",name="username",placeholder="enter username")
-        | 
-        input(type="password",name="password",placeholder="enter password")
-        | 
-        button(type="submit") #{link}
-    - const l = 'login'
-    if link == 'login'
-        a(href="/signup") sign up
-    else 
-        a(href="/login") login 
+    link(rel="stylesheet",href="/stylesheets/login.css")
+    div(id='login')
+        form(method="POST",action="#{link}")
+            input(type="string",name="username",placeholder="enter username")
+            | 
+            input(type="password",name="password",placeholder="enter password")
+            | 
+            button(type="submit") #{link}
+            - const l = 'login'
+            if link == 'login'
+                a(href="/signup") Signup
+            else 
+                a(href="/login") Login 
+        

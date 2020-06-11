@@ -3,6 +3,14 @@ body {
   background-color: rgb(217, 218, 214);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+header {
+  /* margin: 0; */
+  background-color: rgb(23, 121, 179);
+  display: flex;
+  /* width: 100%; */
+  
+  /* padding-left: 10em; */
+}
 
 header h1 {
   text-align: center;
@@ -19,7 +27,7 @@ h2 {
 a {
   text-align: center;
   background-color: rgba(182, 182, 236, 0.911);
-  margin: 0.8em 1em;
+  margin: 0.8em 1em 0.8em 15%;
   padding : 0.6em 0.5em 0em ;
   font-size: 1.2rem;
   font-weight: 300;
@@ -37,21 +45,14 @@ a:hover{
 }
 
 
-header {
-  /* margin: 0; */
-  background-color: rgb(23, 121, 179);
-  display: flex;
-  width: 100%;
-  
-  padding-left: 15%;
-}
 
 .msgbox {
   text-align : center;
-  margin: 0 3em;
+  margin: 2em 12em;
   background-color: white;
-  width: 75%;
+  width: 70%;
   text-align: left;
+  padding: 0.2em 0;
 }
 
 .name {
@@ -65,9 +66,10 @@ header {
   margin-left: 1em;
 }
 #message {
-  margin-left: 3em;
-  width: 70%;
+  margin: 0em 0em 1em 8em;
+  width: 65%;
   font-size: 1.3rem;
+  border-radius: 0.5em;
 }
 
 button {
