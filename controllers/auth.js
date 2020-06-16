@@ -33,7 +33,8 @@ exports.addUser = function(req, res, next){
     console.log(req.body)
     User.create({
         name : req.body.username,
-        password : req.body.password
+        password : req.body.password,
+        email : req.body.email
     }).then(user => {
         // res.redirect("/login");
         req.login(user,function(err){

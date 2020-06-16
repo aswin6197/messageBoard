@@ -8,6 +8,9 @@ block content
             | 
             input(type="password",name="password",placeholder="enter password")
             | 
+            if link == 'signup'
+                input(type ="email",name="email",placeholder="name@email.com")
+                input(type="number",name="age",placeholder="enter age")
             button(type="submit") #{link}
             - const l = 'login'
             if link == 'login'

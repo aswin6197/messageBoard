@@ -10,6 +10,21 @@ module.exports = (sequelize, DataTypes) => {
         let final = bcrypt.hashSync(passwd,bcrypt.genSaltSync(),null);
         this.setDataValue('password',final);
       }
+    },
+    email : {
+      type : DataTypes.STRING,
+      allowNull : false,
+      defaultValue : "empty@email.com",
+      validate : {
+        isEmail : true
+      }
+    },
+    age : {
+      type : DataTypes.INTEGER,
+      defaultValue : 19,
+      validate : {
+        isInt : true
+      }
     }
   }, {instanceMethods : {
       validatePasswor : function(password){
