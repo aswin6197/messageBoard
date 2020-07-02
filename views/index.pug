@@ -6,16 +6,18 @@ block content
   script(src="javascripts/ajaxRequest.js")
   header 
     h1 Message Board
+    a(href='/profile') Profile
     a(href="/logout") Log out 
   h2 Topic Name 
   - var c = 0;
+  
   each msg in messages
-    div(class='msgbox') 
-      p(class="name") #{msg.author}:
-      p(class="msg") #{msg.message} 
+    ul(class='msgbox') 
+      li(class="name") #{msg.author}:
+      li(class="msg") #{msg.message} 
         
   //- input(id = "usrname",type="text",name="username",placeholder="username")
   //- p(id="username") #{username}
   textarea(name="message",id="message" rows="2",placeholder="enter message here")
   | 
-  button(onclick=`sendMessage("${username}")`) Send
+  button(id="send",onclick=`sendMessage("${username}")`) Send

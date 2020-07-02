@@ -1,3 +1,10 @@
+$("#message").keyup(event =>{
+    if(event.keycode === 13){
+        $("#send").click();
+    }
+    console.log("work");
+});
+
 function sendMessage(username){
     var data = {
         username : username,
@@ -16,8 +23,9 @@ function sendMessage(username){
                 "<p class='name'> "+data.username+"</p>"+
                 "<p class='msg'>"+data.message+"</p>"
             ).insertBefore("#message");
-            // $("#message").before("<div class='msgbox'><p>"+data.username +" : "+data.message);
-            $("h2").next().remove();
+            if($(".msgbox").length >= 10)
+                $("h2").next().remove();
+            $("#message").val('');
         }),
         error  : ((err)=>{
             console.log("unable to add to database");

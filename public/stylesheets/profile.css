@@ -1,0 +1,132 @@
+
+body {
+    margin: 0;
+    background-color: rgb(217, 218, 214);
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+#id {
+    display: none;
+}
+
+#box {
+    /* margin: 4% 30% 0 35%; */
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding : 1em 2em;
+    border : 1px dashed black;
+    column-count: 3;
+    column-gap: 20%;
+    column-fill: balance;
+    /* text-transform: capitalize; */
+    
+}
+h2{
+    text-align: center;
+    font-size: 2rem;
+}
+
+#box > li {
+    list-style-type: none;;
+    text-align: center;
+    width: 100%;
+}
+
+.msg {
+    background-color: white;
+}
+
+header {
+    /* margin: 0; */
+    background-color: rgb(23, 121, 179);
+    display: flex;
+    /* width: 100%; */
+    
+    /* padding-left: 10em; */
+  }
+
+  header h1 {
+    text-align: center;
+    width: 85%; 
+    font-size: 2rem;
+    color: white;
+  }
+  
+  a {
+    text-align: center;
+    background-color: rgba(182, 182, 236, 0.911);
+    margin: 0.8em 1em 0.8em 1em;
+    padding : 0.6em 0.5em 0em ;
+    font-size: 1.2rem;
+    font-weight: 300;
+    border-radius: 0.5em;
+    vertical-align: middle;
+    text-decoration: none;
+    /* vertical-align: text-bottom; */
+  }
+  
+  a:hover{
+    color: blueviolet;
+    /* background-color: cadetblue; */
+    text-decoration: underline;
+    /* font-weight: 100; */
+  }
+
+.msg {
+    margin : 1em 10em;
+    padding : 0.5em 2em 1em;
+}
+.msg > p{
+    margin : 0.1em;
+    padding : 0.1em;
+}
+.msgData {
+    font-size : 1.3rem;
+}
+
+#formData {
+    display: none;
+    background-color: grey;
+    width: 30%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    z-index: 1;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+#formPasswd {
+    display: none;
+    background-color: grey;
+    width: 30%;
+    height: 40%;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    z-index: 1;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+#formData > h3,#formPasswd > h3{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+form > input {
+    width: 50%;
+    padding : 1em 10% ;
+    margin-top : 1em ;
+    font-size: 1.1rem;
+}
+
+#shadow {
+    top : 0;
+    left : 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+}
+

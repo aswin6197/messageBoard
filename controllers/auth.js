@@ -6,6 +6,7 @@ require("../passportConfig");
 
 
 var { User} = require("../models");
+const { msg } = require("./board");
 
 //get req for login
 exports.login = function(req, res, next){
@@ -23,7 +24,7 @@ exports.signup = function(req, res, next){
 exports.checkLogin = function(req, res, next){
     console.log(req.body)
     passport.authenticate('local',{
-        successRedirect:"/",
+        successRedirect:"/profile",
         failureRedirect : '/error',
     })(req, res, next);
 }
@@ -53,3 +54,6 @@ exports.logout = function(req, res, next){
     req.logout();
     res.redirect("/login");
 }
+
+
+

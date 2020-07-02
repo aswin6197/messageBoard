@@ -1,6 +1,43 @@
 extends layout
 
 block content
-    h1 Profile page
-    p User name : #{user.name}
+    link(rel="stylesheet",href="stylesheets/profile.css")
+    script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+    script(src="javascripts/profile.js")
+    header 
+        a(href="/") Message
+        a(href="#",onclick=`changePasswd()`) Change Password
+        h1 Profile Page
+        a(href="#" onclick=`edit()` class="openform") Edit Info
+        a(href="/logout") Log out 
+    ul(id="box")
+        li User name : #{user.name}
+        li Email : #{user.email}
+        li Age : #{user.age}
+        li(id="id") #{user.age}
+    div(id="formPasswd")
+        h3 Change Password
+        form(action='/editPasswd',method="post")
+            input(type="password",name="current",placeholder="current password")
+            input(type="password",name="new",placeholder="new password")
+            input(type="password",name="newConfirm",placeholder="confirm password")
+            label(style="display:none") InvalidPassword
+            input(id="paswdSubmit",type="submit")
+    div(id="formData")
+        h3 Edit details
+        form(action="/editData",method="post")
+            input(type="string",name="username",value=user.name,placeholder="enter username")
+            input(type ="email",name="email",value=user.email,placeholder="name@email.com")
+            input(type="number",name="age",value=user.age,placeholder="enter age")
+            input(id="editPasswd",type="password",name="password",placeholder="enter password")
+            label(style="display:none") Invalid
+            input(type="submit",id="editSubmit") 
+    div(id="shadow")
+    div(id = "msgcontainer")
+        h2 My Messages
+        each msg in messages    
+            div(class="msg")
+                    p(class="msgData") Message : #{msg.message}
+                    p(class="msgdate") A t :  #{msg.createdAt}
+
     
