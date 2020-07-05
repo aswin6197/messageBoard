@@ -5,8 +5,10 @@ var { User} = require("../models");
 
 exports.home = function(req, res, next){
     req.user.getMessages().then(msgs => {
+        console.log(req.params.id)
         // for(data of msgs)
         //     console.log(data.message);
+        // console.log();
         res.render("profile",{data : "aswin",user : req.user,messages : msgs})
     })
     // res.render("profile",{user : req.user})

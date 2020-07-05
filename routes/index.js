@@ -8,10 +8,11 @@ var passport = require("passport");
 require("../passportConfig")(passport);
 
 /* GET home page. */
-router.get('/', board.home);
-router.post('/',board.msg);
+router.post('/main',board.msg);
+router.get('/', auth.login);
 
 router.get("/login",auth.login);
+router.get('/main', board.home);
 // router.post("/login",passport.authenticate(
 //     'local',{
 //         successRedirect : "/",
@@ -23,6 +24,8 @@ router.get("/signup",auth.signup);
 router.post("/signup",auth.addUser);
 
 router.get("/logout",auth.logout);
+
+router.get('/profile/:id',profile.home)
 
 router.get("/profile",profile.home);
 router.post("/editData",profile.editData);

@@ -4,50 +4,44 @@ var { Message,User } = require("../models");
 
 exports.home = function(req, res, next) {
 
-    // console.log(req.user);
-    // console.log("here" + req.user.msg)
     if(!req.isAuthenticated())
         res.redirect("/login");
 
+    let page = req.query.page || 1;
+    console.log("page num is "+page)
+    
+
+    if(page == undefined)
+        page = 1;
     Message.count().then(count =>{
-        let msgCount = 10;
-        let ofset = (count > msgCount)? count - msgCount : 0
+        let msgCount = 7;
+        let lastPage = Math.ceil(count / msgCount)
+        let limit =  msgCount;
+        let offset = (page - 1)* msgCount;
+
+        // let ofset = (count > msgCount)? count - msgCount : 0
         Message.findAll({
             attributes : ['author','message'],
-            offset : ofset,
-            limit : msgCount,
-            order : [['createdAt','ASC']]
+            // offset : ofset,
+            limit : limit,
+            offset : offset,
+            order : [['createdAt','DESC']]
         }).then(msgs =>{
             // console.log(msgs[0].Users)
-            res.render('index',{messages : msgs,username :req.user.name});
+            console.log(page,lastPage);
+            res.render('index',{messages : msgs,username :req.user.name,page : page,max : lastPage,limit : msgCount});
         })
     });
-    // messages.findAll({
-    //     attributes : ['name','message'],
-    //     order : [
-    //         ['createdAt','ASC']
-    //     ]
-    // }).then(msgs =>{
-    //     res.render('index',{messages : msgs,test:"tst"})
-    // })
-    // res.render('index', { title: "temp" });
-  };
+   };
 
 exports.msg = function(req, res, next) {
-    console.log(req.user.name);
+    // console.log(req.user.name);
     req.user.createMessage({
         author : req.user.name,
         message : req.body.message
     })
-    // messages.create({
-    //     author : req.body.username,
-    //     message : req.body.message
-    // })
+    
     .then(msg => {
-
-        // console.log("added"+msg);
-        res.send({msg:"success"});
+    res.send({msg:"success"});
     })
-    // console.log("message is "+req.body.input);
-    // res.redirect("/done");
 }

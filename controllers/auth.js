@@ -11,7 +11,7 @@ const { msg } = require("./board");
 //get req for login
 exports.login = function(req, res, next){
     if(req.isAuthenticated())
-        res.redirect("/");
+        res.redirect("/main");
     res.render('loginSignup',{link : "login"});
 }
 
@@ -24,7 +24,7 @@ exports.signup = function(req, res, next){
 exports.checkLogin = function(req, res, next){
     console.log(req.body)
     passport.authenticate('local',{
-        successRedirect:"/profile",
+        successRedirect:"/main",
         failureRedirect : '/error',
     })(req, res, next);
 }
