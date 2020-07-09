@@ -31,7 +31,8 @@ header {
     background-color: rgb(23, 121, 179);
     display: flex;
     /* width: 100%; */
-    
+    z-index: 1;
+    position: relative;
     /* padding-left: 10em; */
   }
 
@@ -40,6 +41,7 @@ header {
     width: 85%; 
     font-size: 2rem;
     color: white;
+    
   }
   
   header > a {

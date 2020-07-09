@@ -3,26 +3,7 @@ body {
     background-color: rgb(217, 218, 214);
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   }
-  /* header {
-    /* margin: 0; */
-    background-color: rgb(23, 121, 179);
-    display: flex;
-    z-index: 1;
-    position: relative;
-    /* width: 100%; */
-    
-    /* padding-left: 10em; */
-  } */
-  
-  /* header h1 {
-    text-align: center;
-    width: 85%; 
-    margin-left: 14%;
-    font-size: 2rem;
-    color: white;
-  } */
-  
-
+ 
   #prev {
     position: fixed;
     background-color: rgba(180, 167, 185, 0);
@@ -76,25 +57,6 @@ body {
     text-decoration: none;
   }
   
-
-  
-  
-  
-  /* header > a {
-    text-align: center;
-    background-color: rgba(182, 182, 236, 0.911);
-    margin: 0.8em 1em 0.8em 1em;
-    padding : 1em 0.5em 0em ;
-    font-size: 1rem;
-    font-weight: 300;
-    width: 5%;
-    vertical-align: middle;
-    border-radius: 0.5em;
-    vertical-align: middle;
-    text-decoration: none;
-    /* vertical-align: text-bottom; */
-  } */
-  
   a:hover{
     color: blueviolet;
     /* background-color: cadetblue; */
@@ -131,25 +93,4 @@ body {
     width : 90%;
     float : right;
   }
-  /* #message {
-    margin: 0em 0em 2em 15%;
-    width: 65%;
-    font-size: 1.3rem;
-    border-radius: 0.5em;
-  } */
-  
-  /* button {
-    position: absolute;
-    margin: 0 1em;
-    font-size: 1.2rem;
-    background-color: green;
-    padding: 0.7em;
-    border-radius: 0.4em;
-    cursor: pointer;
-  } */
-  
-  /* button:hover{
-    text-decoration: underline;
-    background-color: rgb(21, 255, 0);
-  } */
-  
+ 
