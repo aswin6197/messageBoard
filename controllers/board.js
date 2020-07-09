@@ -21,7 +21,7 @@ exports.home = function(req, res, next) {
 
         // let ofset = (count > msgCount)? count - msgCount : 0
         Message.findAll({
-            attributes : ['author','message'],
+            attributes : ['author','message','createdAt'],
             // offset : ofset,
             limit : limit,
             offset : offset,
@@ -29,7 +29,7 @@ exports.home = function(req, res, next) {
         }).then(msgs =>{
             // console.log(msgs[0].Users)
             console.log(page,lastPage);
-            res.render('index2',{
+            res.render('index',{
                 messages : msgs,
                 username :req.user.name,
                 page : page,

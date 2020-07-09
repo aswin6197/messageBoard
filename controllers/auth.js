@@ -24,7 +24,7 @@ exports.signup = function(req, res, next){
 exports.checkLogin = function(req, res, next){
     console.log(req.body)
     passport.authenticate('local',{
-        successRedirect:"/main",
+        successRedirect:"/profile",
         failureRedirect : '/error',
     })(req, res, next);
 }

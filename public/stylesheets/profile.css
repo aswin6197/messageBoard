@@ -1,9 +1,4 @@
 
-body {
-    margin: 0;
-    background-color: rgb(217, 218, 214);
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
 #id {
     display: none;
 }
@@ -31,10 +26,6 @@ h2{
     width: 100%;
 }
 
-.msg {
-    background-color: white;
-}
-
 header {
     /* margin: 0; */
     background-color: rgb(23, 121, 179);
@@ -51,7 +42,7 @@ header {
     color: white;
   }
   
-  a {
+  header > a {
     text-align: center;
     background-color: rgba(182, 182, 236, 0.911);
     margin: 0.8em 1em 0.8em 1em;
@@ -64,24 +55,12 @@ header {
     /* vertical-align: text-bottom; */
   }
   
-  a:hover{
+  header > a:hover{
     color: blueviolet;
     /* background-color: cadetblue; */
     text-decoration: underline;
     /* font-weight: 100; */
   }
-
-.msg {
-    margin : 1em 10em;
-    padding : 0.5em 2em 1em;
-}
-.msg > p{
-    margin : 0.1em;
-    padding : 0.1em;
-}
-.msgData {
-    font-size : 1.3rem;
-}
 
 #formData {
     display: none;
