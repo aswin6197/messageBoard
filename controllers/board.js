@@ -8,7 +8,7 @@ exports.home = function(req, res, next) {
         res.redirect("/login");
 
     let page = req.query.page || 1;
-    console.log("page num is "+page)
+    console.log(req.path)
     
 
     if(page == undefined)
@@ -29,7 +29,14 @@ exports.home = function(req, res, next) {
         }).then(msgs =>{
             // console.log(msgs[0].Users)
             console.log(page,lastPage);
-            res.render('index',{messages : msgs,username :req.user.name,page : page,max : lastPage,limit : msgCount});
+            res.render('index2',{
+                messages : msgs,
+                username :req.user.name,
+                page : page,
+                max : lastPage,
+                limit : msgCount,
+                url : req.path
+            });
         })
     });
    };

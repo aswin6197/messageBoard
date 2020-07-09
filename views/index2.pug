@@ -1,0 +1,24 @@
+extends messageLayout
+
+block library
+  script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+  script(src="/javascripts/ajaxRequest.js")
+  link(rel="stylesheet",href="/stylesheets/main.css")
+block variables
+    - var messages = messages
+    - var page = page
+    - var max = max
+    - var url = url
+block header
+    header 
+        a(href='/profile') Profile
+        h1 Message Board
+        a(href="/logout") Log out 
+    div(id="top")
+        p(id="topic") Topic Name 
+block extra          
+    //- input(id = "usrname",type="text",name="username",placeholder="username")
+    //- p(id="username") #{username}
+    textarea(name="message",id="message" rows="2",placeholder="enter message here")
+    | 
+    button(id="send",onclick=`sendMessage("${username}","/main","${limit}")`) Send

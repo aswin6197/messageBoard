@@ -28,7 +28,7 @@ function sendMessage(username,url,limit){
             $("#message").prev().clone().html(
                 "<li class='name'> "+data.username+"</li>"+
                 "<li class='msg'>"+data.message+"</li>"
-            ).insertAfter("#top")
+            ).insertAfter("#topic")
             if($(".msgbox").length >= limit-1)
                 $("#message").prev().remove();
             $("#message").val('');

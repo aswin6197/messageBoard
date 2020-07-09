@@ -1,0 +1,28 @@
+doctype html
+html 
+    head    
+        title MessageBoard
+        link(rel='stylesheet', href='/stylesheets/messageLayout.css')
+        link(rel="stylesheet" href="/stylesheets/font/css/font-awesome.min.css")
+        block library
+    body
+    
+    
+        block variables
+        
+        block header 
+        div
+            if page > 1
+                a(id="prev" href=url+'?page='+(Number(page)-1)) 
+                    i(class="fa fa-3x fa-arrow-left" aria-hidden="true") 
+        div
+             
+            each msg in messages
+                ul(class='msgbox') 
+                    li(class="name") #{msg.author}:
+                    li(class="msg") #{msg.message}   
+            block extra
+        div  
+            if page < max
+                a(id="next",href=url+"?page="+(Number(page)+1))
+                    i(class="fa fa-3x fa-arrow-right" aria-hidden="true") 

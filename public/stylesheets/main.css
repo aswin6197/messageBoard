@@ -1,8 +1,4 @@
-body {
-  margin: 0;
-  background-color: rgb(217, 218, 214);
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+
 header {
   /* margin: 0; */
   background-color: rgb(23, 121, 179);
@@ -21,63 +17,9 @@ header h1 {
   font-size: 2rem;
   color: white;
 }
-
 #top {
-  margin : 1em 15%;
+  margin : 1.2em 15%;
 }
-#prev {
-  position: fixed;
-  background-color: rgba(180, 167, 185, 0);
-  top : 0;
-  left : 0;
-  height: 100%;
-  width: 5%;
-  z-index: 0;
-  /* background-color: rgba(182, 182, 236, 0.911); */
-  font-size: 1rem;
-  font-weight: 300;
-  border-radius: 0.5em;
-  text-decoration: none;
-  padding-top: 30em;
-  text-align: center;
-}
-
-#next {
-  z-index: 0;
-  position: fixed;
-  top : 0;
-  right : 0;
-  height: 100%; 
-  width: 5%;
-  font-size: 1rem;
-  font-weight: 300;
-  border-radius: 0.5em;
-  text-decoration: none;
-  padding-top: 30em;
-  text-align: center;
-  background-color: rgba(180, 167, 185, 0);
-}
-
-#next:hover,#prev:hover {
-  background-color: rgba(110, 110, 114, 0.911);
-}
-
-
-
-#prev > a,#next > a{
-  display: block;
-  text-align: center;
-  background-color: rgba(182, 182, 236, 0.911);
-  /* margin: 0.5em; */
-  padding : 0.5em;
-  font-size: 1rem;
-  font-weight: 300;
-  width: 100%;
-  height: 100%;
-  border-radius: 0.5em;
-  text-decoration: none;
-}
-
 #topic{
   display: inline-block;
   width: 50%;
@@ -85,9 +27,6 @@ header h1 {
   font-size: 1.2rem;
   text-align: center;
 }
-
-
-
 header > a {
   text-align: center;
   background-color: rgba(182, 182, 236, 0.911);
@@ -108,36 +47,6 @@ a:hover{
   /* background-color: cadetblue; */
   text-decoration: underline;
   /* font-weight: 100; */
-}
-
-
-
-.msgbox {
-  overflow: auto;
-  text-align : center;
-  margin: 2em 10% 1.5em 15%;
-  background-color: white;
-  width: 70%;
-  text-align: left;
-  padding: 1em 0;
-}
-.name{
-  width : 5%;
-  float : left;
-  font-size: 0.9rem;
-  /* font-size: 1.3rem; */
-  margin-left: 0.5em;
-  text-transform: capitalize;
-}
-li {
-  list-style-type: none;
-}
-
-.msg{
-  font-size: 1.1rem;
-  margin-left: 1em;
-  width : 90%;
-  float : right;
 }
 #message {
   margin: 0em 0em 2em 15%;

@@ -9,17 +9,15 @@ require("../passportConfig")(passport);
 
 /* GET home page. */
 router.post('/main',board.msg);
-router.get('/', auth.login);
-
-router.get("/login",auth.login);
 router.get('/main', board.home);
+
+// router.get("/login",auth.login);
 // router.post("/login",passport.authenticate(
-//     'local',{
-//         successRedirect : "/",
-//         failureRedirect : "/error"
-//     }
-// ));
-router.post("/login",auth.checkLogin);  
+    //     'local',{
+        //         successRedirect : "/",
+        //         failureRedirect : "/error"
+        //     }
+        // ));
 router.get("/signup",auth.signup);
 router.post("/signup",auth.addUser);
 
@@ -32,4 +30,7 @@ router.post("/editData",profile.editData);
 router.post("/editPasswd",profile.editPasswd);
 
 router.post("/passwd",profile.passwd);
+router.get('/', auth.login);
+router.post("/",auth.checkLogin);  
 module.exports = router;
+        

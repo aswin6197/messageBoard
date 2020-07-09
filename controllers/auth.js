@@ -52,7 +52,7 @@ exports.addUser = function(req, res, next){
 //get req for logout
 exports.logout = function(req, res, next){
     req.logout();
-    res.redirect("/login");
+    res.redirect("/");
 }
 
 
