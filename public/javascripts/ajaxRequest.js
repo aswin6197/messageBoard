@@ -1,9 +1,12 @@
-$("#message").keyup(event =>{
-    if(event.keycode === 13){
-        // $("#send").click();
+$(document).ready(()=>{
+    document.getElementById("message").onkeypress = function(e) {
+        var key = e.charCode || e.keyCode || 0;
+        if(key == 13){
+            console.log("enter pressed");
+            document.getElementById("send").click()
+        }
     }
-    console.log("work");
-});
+})
 
 // $("textarea").autoResize();
 
@@ -28,7 +31,7 @@ function sendMessage(username,url,limit){
             $("#message").prev().clone().html(
                 "<li class='name'> "+data.username+"</li>"+
                 "<li class='msg'>"+data.message+"</li>"
-            ).insertAfter("#topic")
+            ).insertAfter("#top")
             if($(".msgbox").length >= limit-1)
                 $("#message").prev().remove();
             $("#message").val('');

@@ -96,15 +96,14 @@ exports.editData = function(req, res, next){
 //change password
 exports.editPasswd = function(req ,res ,next){
     let user = req.user;
-    if(user.validatePassword(req.body.current)){
-        if(req.body.new == req.body.newConfirm){
+    console.log("wrong one")
+    if(user.validatePassword(req.body.current) && (req.body.new == req.body.newConfirm)){
             user.password = req.body.new;
             res.redirect("/profile")
             user.save();
         }
-        else{
-            res.redirect("/error")
-        }
+    else{
+        res.redirect("/error")
     }
 }
 
@@ -123,4 +122,16 @@ exports.passwd = function(req ,res ,next){
         res.end("false")
     }
     res.end("false")
+}
+
+exports.checkPasswd = function(req ,res ,next){
+    let user = req.user;
+    console.log("i am here")
+    let passwd = req.body.passwd;
+    // console.log(user)
+    console.log(req.body)
+    let op = user.validatePassword(passwd);
+    console.log(op);
+
+    res.send(op )
 }

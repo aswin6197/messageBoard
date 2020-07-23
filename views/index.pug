@@ -9,16 +9,17 @@ block variables
     - var page = page
     - var max = max
     - var url = url
+    - var topics = []
 block header
     header 
         a(href='/profile') Profile
         h1 Message Board
         a(href="/logout") Log out 
     div(id="top")
-        p(id="topic") Topic Name 
+        p(id="topic") #{topic}
 block extra          
     //- input(id = "usrname",type="text",name="username",placeholder="username")
     //- p(id="username") #{username}
     textarea(name="message",id="message" rows="2",placeholder="enter message here")
     | 
-    button(id="send",onclick=`sendMessage("${username}","/main","${limit}")`) Send
+    button(id="send",onclick=`sendMessage("${username}","/topic/${topic}","${limit}")`) Send

@@ -1,0 +1,29 @@
+//- doctype html
+//- html
+
+//-     body
+//-         h1 List of Topics
+//-         for topic in topics
+//-             a(href="/topic/"+topic.topic) #{topic.topic} 
+extend messageLayout
+
+block library
+    link(rel="stylesheet",href="/stylesheets/main.css")
+
+block variables
+    - var messages = []
+    - var page = page
+    - var max = max
+    - var url = url
+    - var topics = topics
+
+block header
+    header 
+        a(href='/profile') Profile
+        h1 Message Board
+        a(href="/logout") Log out 
+
+block extra
+    form(action="/topics",method="POST")
+        input(type="text",id="topic",name="topic",placeholder="topic Name")
+        input(type="submit")

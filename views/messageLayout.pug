@@ -15,8 +15,12 @@ html
             if page > 1
                 a(id="prev" href=url+'?page='+(Number(page)-1)) 
                     i(class="fa fa-3x fa-arrow-left" aria-hidden="true") 
-        div
-             
+        div(id="mainbody")
+            for topic in topics
+                ul(class='msgbox') 
+                    console.log(topic)
+                    a(class = "msg" href="/topic/"+topic.id) #{topic.TopicName}
+                 
             each msg in messages
                 ul(class='msgbox') 
                     li(class="name") #{msg.author}:

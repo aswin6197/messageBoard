@@ -9,9 +9,10 @@ block variables
     - var page = page
     - var max = max
     - var url = url
+    - var topics = []
 block header
     header 
-        a(href="/") Message
+        a(href="/topics") Message
         a(href="#",onclick=`changePasswd()`) Change Password
         h1 Profile Page
         a(href="#" onclick=`edit()` class="openform") Edit Info
@@ -25,21 +26,23 @@ block header
 block extra    
     div(id="formPasswd")
         h3 Change Password
-        form(action='/editPasswd',method="post")
+        form(id="editPasswd" action='/editPasswd',method="post")
             input(type="password",name="current",placeholder="current password")
             input(type="password",name="new",placeholder="new password")
             input(type="password",name="newConfirm",placeholder="confirm password")
-            label(style="display:none") InvalidPassword
-            input(id="paswdSubmit",type="submit")
+            input(id="passwdSubmit",type="button" onClick="test(0)" value="Submit")  
+            p(hidden) InvalidPassword
+            //- input(type="submit", hidden)
     div(id="formData")
         h3 Edit details
-        form(action="/editData",method="post")
+        form(id="editData" action="/editData",method="post")
             input(type="string",name="username",value=user.name,placeholder="enter username")
             input(type ="email",name="email",value=user.email,placeholder="name@email.com")
             input(type="number",name="age",value=user.age,placeholder="enter age")
-            input(id="editPasswd",type="password",name="password",placeholder="enter password")
-            label(style="display:none") Invalid
-            input(type="submit",id="editSubmit") 
+            input(type="password",name="password",placeholder="enter password")
+            input(type="button",onClick="test(1)",value="submit")
+            p(hidden) Invalid Password
+            //- input(type="submit", hidden) 
     div(id="shadow")
     
     

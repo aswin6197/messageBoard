@@ -32,5 +32,13 @@ router.post("/editPasswd",profile.editPasswd);
 router.post("/passwd",profile.passwd);
 router.get('/', auth.login);
 router.post("/",auth.checkLogin);  
+
+router.post("/checkPasswd",profile.checkPasswd);
+
+router.get("/topics",board.topicList)
+
+router.get("/topic/:topic",board.msgList);
+router.post("/topic/:topic",board.addMessage);
+router.post("/topics",board.addTopics);
 module.exports = router;
         

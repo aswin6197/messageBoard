@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   const Message = sequelize.define('Message', {
     message: DataTypes.TEXT,
     author: DataTypes.STRING,
+    topic : DataTypes.STRING,
     createdAt : {
       type : DataTypes.DATE,
       get() {
@@ -18,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Message.associate = function(models) {
     Message.belongsTo(models.User);
+    Message.belongsTo(models.Topic)
     // associations can be defined here
   };
   return Message;
