@@ -5,7 +5,7 @@ module.exports = {
     return(
       queryInterface.addColumn(
         'Messages',
-        "TopicId",
+        "topicId",
         {
           type : Sequelize.INTEGER
         }
