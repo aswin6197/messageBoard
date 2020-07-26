@@ -162,9 +162,9 @@ exports.addMessage = function(req, res, next){
 
 exports.addTopics = function(req, res, next){
     Topic.count().then(count =>{
-
+        
         Topic.create({
-            TopicName : req.body.topic,
+            topicName : req.body.topic,
             id : count+1
         }).then(topic =>{
             res.redirect("/topics")
