@@ -149,7 +149,7 @@ exports.addMessage = function(req, res, next){
         req.user.createMessage({
             author : req.user.name,
             message : req.body.message,
-            topicId : topic,
+            TopicId : topic,
             id : count+1
         })
         // console.log("next sending works")
