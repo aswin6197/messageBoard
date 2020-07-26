@@ -32,22 +32,25 @@ exports.checkLogin = function(req, res, next){
 //post req of signup
 exports.addUser = function(req, res, next){
     console.log(req.body)
-    User.create({
-        name : req.body.username,
-        password : req.body.password,
-        email : req.body.email,
-        age : req.body.age,
-        id : req.body.age
-    }).then(user => {
-        // res.redirect("/login");
-        req.login(user,function(err){
+    User.count().then(count =>{
+
+        User.create({
+            name : req.body.username,
+            password : req.body.password,
+            email : req.body.email,
+            age : req.body.age,
+            id : count+1
+        }).then(user => {
+            // res.redirect("/login");
+            req.login(user,function(err){
             if(err)
-                return next(err);
+            return next(err);
             res.redirect("/");
         });
     }).catch(function(err){
         console.log(err);
         res.redirect("/error");
+    })
     })
 }
 

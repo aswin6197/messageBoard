@@ -144,24 +144,31 @@ exports.msgList = function(req, res, next){
 
 exports.addMessage = function(req, res, next){
     let topic = req.param("topic");
+    Message.count().then(count =>{
 
-    req.user.createMessage({
-        author : req.user.name,
-        message : req.body.message,
-        topicId : topic
-    })
-    // console.log("next sending works")
-    .then(msg => {
-        console.log("new one works")
-    res.send({msg:"success"});
+        req.user.createMessage({
+            author : req.user.name,
+            message : req.body.message,
+            topicId : topic,
+            id : count+1
+        })
+        // console.log("next sending works")
+        .then(msg => {
+            console.log("new one works")
+            res.send({msg:"success"});
+        })
     })
 }
 
 exports.addTopics = function(req, res, next){
-    Topic.create({
-        TopicName : req.body.topic
-    }).then(topic =>{
-        res.redirect("/topics")
+    Topic.count().then(count =>{
+
+        Topic.create({
+            TopicName : req.body.topic,
+            id : count+1
+        }).then(topic =>{
+            res.redirect("/topics")
+        })
     })
 }
 
