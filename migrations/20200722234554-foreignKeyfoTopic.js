@@ -5,7 +5,7 @@ module.exports = {
     return(
       queryInterface.addColumn(
         'Messages',
-        "topicId",
+        "TopicId",
         {
           type : Sequelize.INTEGER
         }
@@ -23,7 +23,7 @@ module.exports = {
     return(
       queryInterface.removeColumn(
         'Messages',
-        'topicId'
+        'TopicId'
       )
     )
     /**
