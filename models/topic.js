@@ -30,7 +30,7 @@
 
 module.exports = (sequelize,DataTypes)=>{
   const Topic = sequelize.define('Topic',{
-    TopicName : DataTypes.STRING,
+    topicName : DataTypes.STRING,
     id : {
       type : DataTypes.INTEGER,
       primaryKey : true

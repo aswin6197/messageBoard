@@ -82,7 +82,7 @@ exports.topicList = function(req, res, next){
     // })
     Topic.findAll({
         // attributes : ['topic'],
-        attributes : ['topicName','id'],
+        attributes : ['TopicName','id'],
         order : [['createdAt','DESC']]
     }).then(messages =>{
         console.log(messages);
@@ -164,7 +164,7 @@ exports.addTopics = function(req, res, next){
     Topic.count().then(count =>{
 
         Topic.create({
-            topicName : req.body.topic,
+            TopicName : req.body.topic,
             id : count+1
         }).then(topic =>{
             res.redirect("/topics")
