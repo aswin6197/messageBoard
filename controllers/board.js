@@ -105,7 +105,7 @@ exports.msgList = function(req, res, next){
         page = 1;
     Message.count({
         where : {
-            topicId : topic
+            TopicId : topic
         }
     }).then(count =>{
         let msgCount = 7;
