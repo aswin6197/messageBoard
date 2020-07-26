@@ -23,7 +23,7 @@ module.exports = {
     return(
       queryInterface.removeColumn(
         'Messages',
-        'topicId'
+        'TopicId'
       )
     )
     /**
