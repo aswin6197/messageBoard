@@ -16,11 +16,8 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": null,
-    "password": null,
-    "database": null,
-    "host": null,
-    "dialect": "postgresql",
+    "protocol":"postgres",
+    "dialect": "postgres",
     "operatorsAliases": false,
     "use_env_variable": "DATABASE_URL"
   }
