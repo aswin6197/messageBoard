@@ -82,7 +82,7 @@ exports.topicList = function(req, res, next){
     // })
     Topic.findAll({
         // attributes : ['topic'],
-        attributes : ['TopicName','id'],
+        attributes : ['topicName','id'],
         order : [['createdAt','DESC']]
     }).then(messages =>{
         console.log(messages);
