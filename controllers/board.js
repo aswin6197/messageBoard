@@ -164,7 +164,7 @@ exports.addTopics = function(req, res, next){
     Topic.count().then(count =>{
         
         Topic.create({
-            topicName : req.body.topic,
+            TopicName : req.body.topic,
             id : count+1
         }).then(topic =>{
             res.redirect("/topics")
