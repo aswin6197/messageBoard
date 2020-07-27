@@ -20,13 +20,12 @@ header h1 {
 #top {
   margin : 1.2em 15%;
 }
-#topic{
-  display: inline-block;
-  width: 50%;
-  margin: 0 15%;
-  font-size: 1.2rem;
+
+#topic {
   text-align: center;
+  font-size: 2rem;
 }
+
 header > a {
   text-align: center;
   background-color: rgba(182, 182, 236, 0.911);

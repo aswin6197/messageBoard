@@ -100,6 +100,15 @@ exports.msgList = function(req, res, next){
     // let topic = req.param("topic");
     let topic = req.params.topic
     console.log(topic)
+    let topicName;
+    Topic.findOne({
+        attributes : ['TopicName'],
+        where : {
+            id : topic
+        }
+    }).then(TopicName => {
+        topicName = TopicName.TopicName
+    })
 
     if(page == undefined)
         page = 1;
@@ -136,7 +145,7 @@ exports.msgList = function(req, res, next){
                 max : lastPage,
                 limit : msgCount,
                 url : req.path,
-                topic : topic
+                topic : topicName
             });
         })
     });

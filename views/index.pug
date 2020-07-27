@@ -12,14 +12,14 @@ block variables
     - var topics = []
 block header
     header 
-        a(href='/profile') Profile
+        a(href='/topics') Topics
         h1 Message Board
         a(href="/logout") Log out 
     div(id="top")
-        p(id="topic") #{topic}
+        h2(id="topic") #{topic}
+
 block extra          
-    //- input(id = "usrname",type="text",name="username",placeholder="username")
-    //- p(id="username") #{username}
-    textarea(name="message",id="message" rows="2",placeholder="enter message here")
-    | 
-    button(id="send",onclick=`sendMessage("${username}","/topic/${topic}","${limit}")`) Send
+    if page == 1
+        textarea(name="message",id="message" rows="2",placeholder="enter message here")
+        | 
+        button(id="send",onclick=`sendMessage("${username}","/topic/${topic}","${limit}")`) Send

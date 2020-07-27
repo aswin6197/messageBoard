@@ -10,28 +10,40 @@ const { msg } = require("./board");
 
 //get req for login
 exports.login = function(req, res, next){
+
     if(req.isAuthenticated())
         res.redirect("/topics");
-    res.render('loginSignup',{link : "login"});
+    let incorrect = req.query.fail;
+    console.log(incorrect)
+    res.render('loginSignup',{link : "login",failed : incorrect});
 }
 
+exports.main = function(req, res, next){
+    if(req.isAuthenticated())
+        res.redirect("/topics");
+    res.redirect("/login")
+}
 
 //get req for signup
 exports.signup = function(req, res, next){
-    res.render('loginSignup',{link : "signup"});
+    let invalid = req.query.invalid
+
+    res.render('loginSignup',{link : "signup",invalid : invalid});
 }
 //post req for login
 exports.checkLogin = function(req, res, next){
     console.log(req.body)
     passport.authenticate('local',{
         successRedirect:"/topics",
-        failureRedirect : '/error',
+        failureRedirect : '/login?fail=true',
     })(req, res, next);
 }
 
+
+
 //post req of signup
 exports.addUser = function(req, res, next){
-    console.log(req.body)
+    // console.log(req.body)
     User.count().then(count =>{
 
         User.create({
@@ -49,7 +61,7 @@ exports.addUser = function(req, res, next){
         });
     }).catch(function(err){
         console.log(err);
-        res.redirect("/error");
+        res.redirect("/signup?invalid=true");
     })
     })
 }

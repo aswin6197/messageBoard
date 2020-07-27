@@ -8,7 +8,7 @@
 extend messageLayout
 
 block library
-    link(rel="stylesheet",href="/stylesheets/main.css")
+    link(rel="stylesheet",href="/stylesheets/topicList.css")
 
 block variables
     - var messages = []
@@ -24,6 +24,6 @@ block header
         a(href="/logout") Log out 
 
 block extra
-    form(action="/topics",method="POST")
+    form(id="topicForm",action="/topics",method="POST")
         input(type="text",id="topic",name="topic",placeholder="topic Name")
-        input(type="submit")
+        input(type="submit",id="send")

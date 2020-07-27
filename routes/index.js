@@ -18,8 +18,12 @@ router.get('/main', board.home);
         //         failureRedirect : "/error"
         //     }
         // ));
+
+router.get("/",auth.main)        
 router.get("/signup",auth.signup);
 router.post("/signup",auth.addUser);
+
+// router.get("/incorrect",auth.incorrect);
 
 router.get("/logout",auth.logout);
 
@@ -30,8 +34,8 @@ router.post("/editData",profile.editData);
 router.post("/editPasswd",profile.editPasswd);
 
 router.post("/passwd",profile.passwd);
-router.get('/', auth.login);
-router.post("/",auth.checkLogin);  
+router.get('/login', auth.login);
+router.post("/login",auth.checkLogin);  
 
 router.post("/checkPasswd",profile.checkPasswd);
 
