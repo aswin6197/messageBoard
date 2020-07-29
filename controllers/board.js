@@ -1,58 +1,61 @@
 var express = require('express');
 var router = express.Router();
 var { Topic,Message,User, sequelize } = require("../models");
+var path = require('path')
 
-exports.home = function(req, res, next) {
+// not needed
+// exports.home = function(req, res, next) {
 
-    if(!req.isAuthenticated())
-        res.redirect("/login");
+//     if(!req.isAuthenticated())
+//         res.redirect("/login");
 
-    let page = req.query.page || 1;
-    console.log(req.path)
+//     let page = req.query.page || 1;
+//     console.log(req.path)
     
 
-    if(page == undefined)
-        page = 1;
-    Message.count().then(count =>{
-        let msgCount = 7;
-        let lastPage = Math.ceil(count / msgCount)
-        let limit =  msgCount;
-        let offset = (page - 1)* msgCount;
+//     if(page == undefined)
+//         page = 1;
+//     Message.count().then(count =>{
+//         let msgCount = 7;
+//         let lastPage = Math.ceil(count / msgCount)
+//         let limit =  msgCount;
+//         let offset = (page - 1)* msgCount;
 
-        // let ofset = (count > msgCount)? count - msgCount : 0
-        Message.findAll({
-            attributes : ['author','message','createdAt'],
-            // offset : ofset,
-            limit : limit,
-            offset : offset,
-            order : [['createdAt','DESC']]
-        }).then(msgs =>{
-            // console.log(msgs[0].Users)
-            console.log(page,lastPage);
-            res.render('index',{
-                messages : msgs,
-                username :req.user.name,
-                page : page,
-                max : lastPage,
-                limit : msgCount,
-                url : req.path
-            });
-        })
-    });
-   };
+//         // let ofset = (count > msgCount)? count - msgCount : 0
+//         Message.findAll({
+//             attributes : ['author','message','createdAt'],
+//             // offset : ofset,
+//             limit : limit,
+//             offset : offset,
+//             order : [['createdAt','DESC']]
+//         }).then(msgs =>{
+//             // console.log(msgs[0].Users)
+//             console.log(page,lastPage);
+//             res.render('index',{
+//                 messages : msgs,
+//                 username :req.user.name,
+//                 page : page,
+//                 max : lastPage,
+//                 limit : msgCount,
+//                 url : req.path
+//             });
+//         })
+//     });
+//    };
 
-exports.msg = function(req, res, next) {
-    // console.log(req.user.name);
-    req.user.createMessage({
-        author : req.user.name,
-        message : req.body.message
-    })
+// exports.msg = function(req, res, next) {
+//     // console.log(req.user.name);
+//     req.user.createMessage({
+//         author : req.user.name,
+//         message : req.body.message
+//     })
     
-    .then(msg => {
-    res.send({msg:"success"});
-    })
-}
+//     .then(msg => {
+//     res.send({msg:"success"});
+//     })
+// }
 
+//list all topics
 exports.topicList = function(req, res, next){
     let page = req.query.page || 1;
     if(page == undefined)
@@ -90,6 +93,7 @@ exports.topicList = function(req, res, next){
     })
 }
 
+//list messages
 exports.msgList = function(req, res, next){
 
     if(!req.isAuthenticated())
@@ -124,7 +128,7 @@ exports.msgList = function(req, res, next){
 
         // let ofset = (count > msgCount)? count - msgCount : 0
         Message.findAll({
-            attributes : ['author','message','createdAt'],
+            attributes : ['author','message','createdAt','image'],
             // offset : ofset,
             limit : limit,
             offset : offset,
@@ -151,24 +155,32 @@ exports.msgList = function(req, res, next){
     });
 };
 
+//add new message
 exports.addMessage = function(req, res, next){
     let topic = req.param("topic");
+    let image = null;
     Message.count().then(count =>{
-
+        if(req.file){
+            // console.log("file extension is "+path.extname(req.file.originalname))
+            image = count.toString()+path.extname(req.file.originalname)
+        }
         req.user.createMessage({
             author : req.user.name,
             message : req.body.message,
             TopicId : topic,
-            id : count+1
+            id : count+1,
+            image : image
         })
         // console.log("next sending works")
         .then(msg => {
-            console.log("new one works")
-            res.send({msg:"success"});
+            // console.log("new one works")
+            res.redirect(req.url)
+            // res.send({msg:"success"});
         })
     })
 }
 
+//add new topic
 exports.addTopics = function(req, res, next){
     Topic.count().then(count =>{
         

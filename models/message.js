@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     message: DataTypes.TEXT,
     author: DataTypes.STRING,
     topic : DataTypes.STRING,
+    image : DataTypes.STRING,
     createdAt : {
       type : DataTypes.DATE,
       get() {

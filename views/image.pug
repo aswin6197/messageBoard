@@ -1,0 +1,7 @@
+extends layout
+
+block content
+
+    form(method="POST",action="/images",enctype="multipart/form-data")
+        input( type="file",name="avatar")
+        input(type="submit")

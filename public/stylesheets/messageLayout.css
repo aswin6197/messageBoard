@@ -41,6 +41,10 @@ body {
     background-color: rgba(110, 110, 114, 0.911);
   }
   
+  img{
+    height : 20em;
+    margin: 1em 0 0 11em;
+  }
   
   
   #prev > a,#next > a{

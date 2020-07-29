@@ -22,9 +22,13 @@ html
                     a(class = "msg" href="/topic/"+topic.id) #{topic.TopicName}
                  
             each msg in messages
+                console.log(msg.image)
                 ul(class='msgbox') 
                     li(class="name") #{msg.author}:
-                    li(class="msg") #{msg.message}   
+                    li(class="msg") #{msg.message} #{msg.image} 
+                    - var image = msg.image
+                    if image == 'a'
+                        img(src="/images/"+msg.image,height=) 
                     //- li #{msg.createdAt}
             block extra
         div  

@@ -19,7 +19,14 @@ block header
         h2(id="topic") #{topic}
 
 block extra          
-    if page == 1
+    if page == 0
         textarea(name="message",id="message" rows="2",placeholder="enter message here")
         | 
         button(id="send",onclick=`sendMessage("${username}","/topic/${topic}","${limit}")`) Send
+    else if page == 1
+        form(action=url,method="POST",enctype="multipart/form-data")
+            textarea(name="message",id="message" rows="2",placeholder="enter message here")
+            |
+            input(type="file",name="avatar")
+            |
+            input(type="submit")        
