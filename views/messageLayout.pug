@@ -25,10 +25,10 @@ html
                 console.log(msg.image)
                 ul(class='msgbox') 
                     li(class="name") #{msg.author}:
-                    li(class="msg") #{msg.message} #{msg.image} 
+                    li(class="msg") #{msg.message}
                     - var image = msg.image
-                    if image == 'a'
-                        img(src="/images/"+msg.image,height=) 
+                    if image != 'a'
+                        img(src="/images/"+msg.image,height="20em") 
                     //- li #{msg.createdAt}
             block extra
         div  
